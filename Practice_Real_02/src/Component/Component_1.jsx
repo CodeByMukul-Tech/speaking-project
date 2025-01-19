@@ -1,39 +1,36 @@
-// this is a context api use it here...
-// like warehouse store once distributed any where 
-import React, {createContext,useState} from "react";
+import React, { createContext, useState } from "react";
 import { Fragment } from "react";
 
+// Initialize the context API
+const Authenticate_user = createContext();
 
-//initializa the api to send any where
-export const Authenticate_user = createContext();
+function Authenticator({ children }) { // Fix the prop name
+    const [user, setUser] = useState(null);
+    const [cart, setCart] = useState([]);
 
-function Authenticator({child}){
-    const [user,setuser] = useState(null);
-    const [cart,setcart]= useState([]);
-
-    const login =(userdata)=>{
-        setuser (userdata);
+    const login = (userdata) => {
+        setUser(userdata);
+        console.log(setUser);
+        
     };
 
-    const logout = ()=>{
-        setuser(null);
-        setcart([])
+    const logout = () => {
+        setUser(null);
+        setCart([]);
     };
 
-    const add_cart =(item)=>{
-        setcart((precart)=>[...precart,item]);
-    }
+    const add_cart = (item) => {
+        setCart((preCart) => [...preCart, item]);
+    };
 
+    return (
+        <Fragment>
+            <Authenticate_user.Provider value={{ user, login, logout, cart, add_cart }}>
+                {children} {/* Render the children */}
+            </Authenticate_user.Provider>
+        </Fragment>
+    );
+}
 
- return(
-    <Fragment>
-        <Authenticate_user.Provider value={{user,login,logout,cart,add_cart}}>
-            {child}
-        </Authenticate_user.Provider>
-
-
-    </Fragment>
- );
-};
-export default Authenticator ;
-// export default Authenticate_user;
+export default Authenticator;
+export { Authenticate_user }; // Export the context for use in other components

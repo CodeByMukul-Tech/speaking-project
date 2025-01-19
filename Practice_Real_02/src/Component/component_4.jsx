@@ -1,28 +1,12 @@
-import { Fragment, useContext } from "react";
-import { Authentication, CartAdder } from "./component_3";
-// import Add_to_Cart from "./Component_1";
-function navbar() {
-    const { user } = useContext(Authentication);
-    const { cart } = useContext(CartAdder);
+import { Fragment } from "react";
+import { Authenticate_user } from "./Component_1";
+import { useContext } from "react";
 
-    return (
+function apis(){
+    
+    return(
         <Fragment>
-            <nav>
-
-
-                <h2>
-                    My E-comerce App
-                </h2>
-                <p>welcome
-                    ,{user ? user.name : "guest"}
-                </p>
-                <p>
-                    Cart Item : {cart.lenght}
-                </p>
-            </nav>
-
 
         </Fragment>
     )
 }
-export default navbar;
