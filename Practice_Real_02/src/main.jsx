@@ -5,7 +5,7 @@ import App from './App.jsx';
 import "./Component/login_Card.css";
 import { LoginCard } from './Component/component_3.jsx';
 import Stopwatch from './Timer.jsx';
-import
+// import
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <Authenticator>
